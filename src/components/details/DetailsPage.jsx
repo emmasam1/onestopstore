@@ -113,7 +113,7 @@ export default function DetailsPage() {
                 </IconButton>
               </Tooltip>
 
-              <Link to={`/check_out/${product._id}`}>
+              <Link to={`/check_out/${product?._id}`}>
                 <Button variant="contained" color="success" size="small">
                   Buy now
                 </Button>
