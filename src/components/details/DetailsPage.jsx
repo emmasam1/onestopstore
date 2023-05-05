@@ -76,10 +76,10 @@ export default function DetailsPage() {
               fontSize={12}
               fontWeight="bold"
             >
-              {product.title}
+              {product?.title}
             </Typography>
             <Typography variant="h6" fontSize={15} fontWeight="bold">
-              {product.shortDescription}
+              {product?.shortDescription}
             </Typography>
 
             <Typography
@@ -89,7 +89,7 @@ export default function DetailsPage() {
               fontWeight="bold"
               sx={{ mt: 3 }}
             >
-              &#8358;{product.price}
+              &#8358;{product?.price}
             </Typography>
 
             <Box
@@ -123,7 +123,7 @@ export default function DetailsPage() {
             <Box sx={{ mt: 3 }}>
               <Typography variant="h6">Details</Typography>
               <Typography variant="body2" fontSize={12}>
-                {product.description}
+                {product?.description}
               </Typography>
             </Box>
           </Grid>
