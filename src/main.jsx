@@ -6,11 +6,9 @@ import "./index.css";
 import DataProvider from "./components/redux/store";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
     <DataProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </DataProvider>
-  </React.StrictMode>
 );

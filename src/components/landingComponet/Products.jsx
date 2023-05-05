@@ -144,7 +144,7 @@ function Products() {
                         </Typography>
                         <Link
                           to="details"
-                          state={{ product: product }}
+                          state={{ product }}
                           className="link"
                         >
                           <Button size="small">see details</Button>
