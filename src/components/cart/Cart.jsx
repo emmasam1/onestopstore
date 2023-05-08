@@ -33,19 +33,24 @@ function Cart() {
   }));
 
   const increment = async (product) => {
-    user_id ? null : navigate("/authentication");
+   
     product.quantity = 1;
     product.user_id = user_id;
-
-    try {
-      await apiRequest.post("carts", product);
-      apiRequest.get("get_cart_items").then((res) => {
-        setCartCount(res.data[0].items);
-        setItem(res.data[0]);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    
+      if( user_id === null){
+        navigate("/authentication")
+      }
+      else{
+        try {
+        await apiRequest.post("carts", product);
+        apiRequest.get("get_cart_items").then((res) => {
+          setCartCount(res.data[0].items);
+          setItem(res.data[0]);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+      }
   };
 
   const decrement = async (product) => {

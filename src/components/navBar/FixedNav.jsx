@@ -37,6 +37,8 @@ function FixedNav() {
   const isIn = localStorage.getItem("firstLogin");
   const whoLoggedin = parseInt(localStorage.getItem("whoLoggedIn"));
 
+  console.log(whoLoggedin)
+
   const changeNavbar = () => {
     if (window.scrollY >= 20) {
       setFixedNav(true);
@@ -197,11 +199,11 @@ function FixedNav() {
                   <EmailIcon sx={{ fontSize: 30 }} />
                 </Badge> */}
 
-                <Link to="/cart">
+                {whoLoggedin === 1 ? null : (<Link to="/cart">
                   <Badge color="primary" badgeContent={10} max={cartCount}>
                     <ShoppingCartIcon sx={{ fontSize: 30 }} />
                   </Badge>
-                </Link>
+                </Link>)}
               </Box>
               <Box sx={{ ml: 7 }}>
                 <Tooltip title="Open settings">
@@ -277,11 +279,13 @@ function FixedNav() {
                 go to dashboard
               </Button>
               </Link>
-            ) : (
-              <Button variant="contained" color="success">
+            ) : isIn ?(
+              <Link to='become_a_seller'>
+                <Button variant="contained" color="success">
                 SELL
               </Button>
-            )
+              </Link>
+            ) : null
           ) : null}
         </Toolbar>
       </Container>

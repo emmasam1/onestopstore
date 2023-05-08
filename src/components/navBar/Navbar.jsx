@@ -214,11 +214,13 @@ function Navbar() {
               go to dashboard
             </Button>
             </Link>
-            ) : (
-              <Button variant="contained" color="success">
+            ) : isIn ? (
+              <Link to='become_a_seller'>
+                <Button variant="contained" color="success">
                 SELL
               </Button>
-            )}
+              </Link>
+            ) : null}
           </Box>
         </Toolbar>
       </Container>

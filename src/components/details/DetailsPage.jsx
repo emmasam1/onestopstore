@@ -24,19 +24,24 @@ export default function DetailsPage() {
   const product = location.state?.product;
   const user_id = localStorage.getItem("firstLogin");
   const [, , , setCartCount] = useContext(store);
+  const whoLoggedin = parseInt(localStorage.getItem("whoLoggedIn"));
 
   const handleCart = async () => {
-    user_id ? null : navigate("/authentication");
+    // user_id ? null : navigate("/authentication");
     product.quantity = 1;
-    product?.product_id = product._id;
+    product.product_id = product._id;
     product.user_id = user_id;
     try {
-      await apiRequest.post("carts", product);
+      if(user_id === null){
+        navigate("/authentication")
+      }else{
+        await apiRequest.post("carts", product);
       toast.success("Item added to cart");
 
       apiRequest.get("get_cart_items").then((res) => {
         setCartCount(res.data[0].items);
       });
+      }
     } catch (err) {
       toast.error("Something went worng");
       console.log(err);
@@ -92,33 +97,35 @@ export default function DetailsPage() {
               &#8358;{product.price}
             </Typography>
 
-            <Box
-              className="box_color"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                mt: 2,
-                p: 5,
-              }}
-            >
-              <Tooltip title="Add to cart">
-                <IconButton onClick={handleCart}>
-                  <ShoppingCartIcon />
-                </IconButton>
-              </Tooltip>
+            {whoLoggedin === 1 ? null : (
+              <Box
+                className="box_color"
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  mt: 2,
+                  p: 5,
+                }}
+              >
+                <Tooltip title="Add to cart">
+                  <IconButton onClick={handleCart}>
+                    <ShoppingCartIcon />
+                  </IconButton>
+                </Tooltip>
 
-              <Tooltip title="Share">
-                <IconButton>
-                  <ShareIcon />
-                </IconButton>
-              </Tooltip>
+                <Tooltip title="Share">
+                  <IconButton>
+                    <ShareIcon />
+                  </IconButton>
+                </Tooltip>
 
-              <Link to={`/check_out/${product._id}`}>
-                <Button variant="contained" color="success" size="small">
-                  Buy now
-                </Button>
-              </Link>
-            </Box>
+                <Link to={`/check_out/${product._id}`}>
+                  <Button variant="contained" color="success" size="small">
+                    Buy now
+                  </Button>
+                </Link>
+              </Box>
+            )}
 
             <Box sx={{ mt: 3 }}>
               <Typography variant="h6">Details</Typography>
@@ -129,7 +136,6 @@ export default function DetailsPage() {
           </Grid>
         </Grid>
       </Box>
-     
     </Container>
   );
 }

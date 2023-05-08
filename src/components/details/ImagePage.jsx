@@ -17,7 +17,7 @@ export default function ImagePage({ product }) {
       <Grid>
         <CardMedia
           sx={{ width: "100%", height: 500, backgroundSize: "contain" }}
-          image={product?.image.url}
+          image={product.image.url}
         />
       </Grid>
     </Box>

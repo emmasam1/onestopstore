@@ -9,14 +9,27 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import {  orange, red, blue } from "@mui/material/colors";
 
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+
+import Usertbable from "./Usertbable";
 
 
 const Main = () => {
   const [, , , , products, setProducts] = useContext(store);
   const [users, setUsers] = useState()
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   useEffect(() => {
     apiRequest
       .get("products")
@@ -41,7 +54,7 @@ const Main = () => {
 
   return (
     <Container sx={{ mt: 4 }}>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1, mb: 3}}>
         <Grid container spacing={3}>
           <Grid item xs>
             <Card sx={{ minWidth: 275, textAlign: 'center', background: blue[900], color: 'white' }}>
@@ -81,6 +94,23 @@ const Main = () => {
           </Grid>
         </Grid>
       </Box>
+
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="users" value="1" />
+            <Tab label="Sellers" value="2" />
+            <Tab label="Item Three" value="3" />
+          </TabList>
+        </Box>
+        <TabPanel value="1">
+        <Usertbable />
+        </TabPanel>
+        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="3">Item Three</TabPanel>
+      </TabContext>
+
+     
     </Container>
   );
 };

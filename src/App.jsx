@@ -16,6 +16,7 @@ import Posts from "./components/admin/Posts";
 import Products from "./components/landingComponet/Products";
 import Cart from "./components/cart/Cart";
 import CheckOut from "./components/checkout/CheckOut";
+import Seller from "./components/seller/Seller";
 
 function App() {
   // useEffect(() => {
@@ -43,6 +44,7 @@ function App() {
           <Route path="add_product" element={<Add />} />
           <Route path="all_products" element={<Posts />} />
         </Route>
+        <Route path="/become_a_seller" element={<Seller />} />
       </Routes>
     </Context>
   );
