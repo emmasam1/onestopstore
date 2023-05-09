@@ -39,6 +39,7 @@ const Slider = () => {
             }}
             alt="Slider"
             src={e.image}
+            className="slider_image"
           />
         </SwiperSlide>
             )

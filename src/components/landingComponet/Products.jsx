@@ -39,10 +39,10 @@ function Products() {
 
   return (
     <>
-      <Container maxWidth="lg" sx={{ mt: 1, height: 395}}>
+      <Container maxWidth="lg" className="slider_holder">
         <Box sx={{ flexGrow: 1, p: 0 }}>
           <Grid container spacing={1} sx={{ height: 400 }}>
-            <Grid xs sx={{ display: "flex", flexDirection: "column" }}>
+            <Grid xs sx={{ display: {xs: "none", lg: "flex", md: "flex", xl: "flex"}, flexDirection: "column" }}>
               <Box
                 component="img"
                 alt="Slider"
@@ -57,10 +57,10 @@ function Products() {
                 sx={{ height: 191, width: "100%" }}
               ></Box>
             </Grid>
-            <Grid xs={7}>
+            <Grid xs={6} sx={{width: { xs: "100%", sm: "100%", md: "50%", lg: "50%" }}} className="mobile_slide">
               <Slider />
             </Grid>
-            <Grid xs sx={{ display: "flex", flexDirection: "column" }}>
+            <Grid xs sx={{ display: {xs: "none", lg: "flex", md: "flex", xl: "flex"}, flexDirection: "column" }}>
               <Box
                 component="img"
                 alt="Slider"

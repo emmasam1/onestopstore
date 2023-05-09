@@ -163,21 +163,38 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-/* @media only screen and (max-width: 600px) {
-  .container {
-    height: 200px;
-    width: 100%;
-  }
-} */
+
+.one_stop_store_grid{
+  display: flex;
+}
+.slider_holder{
+  height: 400px;
+  margin-top: 10px;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+@media only screen and (max-width: 600px) {
+  .one_stop_store_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .slider_holder{
+    height: 200px;
+  }
+  .mobile_slide{
+    height: 207px;
+  }
+  .slider_image{
+    height: 200px !important;
+  }
 }

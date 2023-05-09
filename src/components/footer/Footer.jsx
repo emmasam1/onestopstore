@@ -33,6 +33,7 @@ const Footer = () => {
           <Grid
             container
             spacing={3}
+            columns={{ xs: 1, sm: 12, }}
             sx={{
               flexGrow: 1,
               borderBottom: 1,
@@ -59,7 +60,7 @@ const Footer = () => {
                 <WhatsAppIcon sx={{ color: "gray", fontSize: 20, ml: 2 }} />
               </Box>
             </Grid>
-            <Grid xs>
+            <Grid xs={2.5}>
               <Box>
                 <Typography
                   variant="h6"
@@ -105,7 +106,7 @@ const Footer = () => {
                 </Link>
               </Box>
             </Grid>
-            <Grid xs>
+            <Grid xs={2.5}>
               <Box>
                 <Typography
                   variant="h6"
@@ -152,7 +153,7 @@ const Footer = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid xs>
+            <Grid xs={2.5} >
               <Box>
                 <Typography
                   variant="h6"
@@ -197,7 +198,7 @@ const Footer = () => {
       <Container maxWidth="xl" sx={{ pt: 5, pb: 5}}>
         <Container>
           <Grid container spacing={3} sx={{ flexGrow: 1, pt: 3, pb: 3 }}>
-            <Grid xs={6}>
+            <Grid md={6}>
               <Box>
                 <Typography variant="h6" color={grey[500]}>
                   Help
@@ -232,43 +233,37 @@ const Footer = () => {
                   <Typography variant="h6" color={grey[500]}>
                     Browse by Category
                   </Typography>
-                  <Box sx={{ display: "flex" }}>
+                  <Box className="one_stop_store_grid">
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         All Popular,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Product,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Promotion,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Low Price,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Great Value,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Reviews,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         Blog,
@@ -281,13 +276,11 @@ const Footer = () => {
                         Seller Portal,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         BLACK FRIDAY,
                       </Typography>
                     </Link>
-                    &nbsp;
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                         OneStopShop Assistant,
@@ -297,12 +290,12 @@ const Footer = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid xs={6}>
+            <Grid md={6}>
             <Box sx={{ mt: 2 }}>
                   <Typography variant="h6" color={grey[500]}>
                   OneStopShop Multi-Language Sites
                   </Typography>
-                  <Box sx={{ display: "flex" }}>
+                  <Box className="one_stop_store_grid">
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                       Russian,
@@ -363,7 +356,7 @@ const Footer = () => {
                       </Typography>
                     </Link>
                   </Box>
-                  <Box sx={{ display: "flex" }}>
+                  <Box className="one_stop_store_grid">
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                       Turkish,
@@ -398,9 +391,9 @@ const Footer = () => {
 
                 <Box sx={{ mt: 2 }}>
                   <Typography variant="h6" color={grey[500]}>
-                  AliExpress Multi-Language Sites
+                  OneStopShop Multi-Language Sites
                   </Typography>
-                  <Box sx={{ display: "flex" }}>
+                  <Box className="one_stop_store_grid">
                     <Link href="#" underline="none">
                       <Typography variant="h6" fontSize={11} color={grey[700]}>
                       OneStopShop Group Website,
