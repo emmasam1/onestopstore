@@ -26,6 +26,7 @@ const pages = [
   "Tech",
   "Auto mobile",
   "Gift card",
+  "login",
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -37,7 +38,7 @@ function FixedNav() {
   const isIn = localStorage.getItem("firstLogin");
   const whoLoggedin = parseInt(localStorage.getItem("whoLoggedIn"));
 
-  console.log(whoLoggedin)
+  console.log(whoLoggedin);
 
   const changeNavbar = () => {
     if (window.scrollY >= 20) {
@@ -132,11 +133,33 @@ function FixedNav() {
                 },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu} sx={{display: 'flex', flexDirection: 'column', alignItems: 'start'}}>
+                {/* <Typography textAlign="center"> */}
+                  <Link to="/" className="mobile_link">
+                    Products
+                  </Link>
+
+                  <Link to='/' className="mobile_link">
+                  Men section
+                  </Link>
+
+                  <Link to='/' className="mobile_link">
+                  Women section
+                  </Link>
+
+                  <Link to='/' className="mobile_link">
+                  Tech
+                  </Link>
+
+                  <Link to='/' className="mobile_link">
+                  Auto mobile
+                  </Link>
+
+                  <Link to='/authentication' className="mobile_link">
+                  Login
+                  </Link>
+                {/* </Typography> */}
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -181,7 +204,9 @@ function FixedNav() {
                   fontWeight: "700",
                 }}
               >
-                {page}
+                <Link to="/" className="nav_link">
+                  {page}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -199,11 +224,13 @@ function FixedNav() {
                   <EmailIcon sx={{ fontSize: 30 }} />
                 </Badge> */}
 
-                {whoLoggedin === 1 ? null : (<Link to="/cart">
-                  <Badge color="primary" badgeContent={10} max={cartCount}>
-                    <ShoppingCartIcon sx={{ fontSize: 30 }} />
-                  </Badge>
-                </Link>)}
+                {whoLoggedin === 1 ? null : (
+                  <Link to="/cart">
+                    <Badge color="primary" badgeContent={10} max={cartCount}>
+                      <ShoppingCartIcon sx={{ fontSize: 30 }} />
+                    </Badge>
+                  </Link>
+                )}
               </Box>
               <Box sx={{ ml: 7 }}>
                 <Tooltip title="Open settings">
@@ -276,14 +303,14 @@ function FixedNav() {
             whoLoggedin === 1 ? (
               <Link to="/admin">
                 <Button variant="contained" color="success">
-                go to dashboard
-              </Button>
+                  go to dashboard
+                </Button>
               </Link>
-            ) : isIn ?(
-              <Link to='become_a_seller'>
+            ) : isIn ? (
+              <Link to="become_a_seller">
                 <Button variant="contained" color="success">
-                SELL
-              </Button>
+                  SELL
+                </Button>
               </Link>
             ) : null
           ) : null}

@@ -171,6 +171,15 @@ tr:nth-child(even) {
   height: 400px;
   margin-top: 10px;
 }
+.nav_link{
+  text-decoration: none;
+  color: #dddddd60;
+}
+.mobile_link{
+  text-decoration: none;
+  color: #000;
+  margin-bottom: 15px;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

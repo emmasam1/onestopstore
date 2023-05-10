@@ -108,11 +108,11 @@ function Products() {
           </Box>
         ) : (
           <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2} columns={{ xs: 4, sm: 18, md: 24 }}>
+            <Grid container spacing={2} columns={{ xs: 1, sm: 18, md: 24 }}>
               {products.map((product) => {
                 return (
                   <Grid xs={6} key={product._id}>
-                    <Card>
+                    <Card >
                       <CardMedia
                         sx={{ width: "100%", height: 250 }}
                         image={product.image.url}
