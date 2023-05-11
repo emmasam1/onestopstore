@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import apiRequest from "../../utils/apiRequest";
 import {
   showErrMsg,
@@ -75,13 +74,13 @@ export default function SignIn() {
     try {
       const res = await apiRequest.post("login", { email, password });
       setUser({ ...user, err: "", success: res.data.msg });
-      toast.success("Login successfully");
-        navigate("/");
 
       localStorage.setItem("firstLogin", res.data.data._id);
       localStorage.setItem("whoLoggedIn", res.data.data.role);
 
       dispatch(dispatchLogin());
+
+      navigate("/");
     } catch (err) {
       err.response.data.msg &&
         setUser({ ...user, err: err.response.data.msg, success: "" });
@@ -150,18 +149,6 @@ export default function SignIn() {
           <Box>
             {err && showErrMsg(err)}
             {success && showSuccessMsg(success)}
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
           </Box>
           <Box
             sx={{

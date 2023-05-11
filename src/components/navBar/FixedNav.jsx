@@ -26,7 +26,6 @@ const pages = [
   "Tech",
   "Auto mobile",
   "Gift card",
-  "login",
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 

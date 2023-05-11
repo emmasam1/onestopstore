@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let mode = "prod"
+let mode = "dev"
 let BASE_URL;
 if(mode.toUpperCase() =="PROD") BASE_URL = "https://storeserver.herokuapp.com/"
 if(mode.toUpperCase() =="DEV") BASE_URL = "http://localhost:5000/"
