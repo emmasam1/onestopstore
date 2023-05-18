@@ -47,7 +47,6 @@ export default function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const { email, password, err, success } = user;
 
   const handleChangeInput = (e) => {

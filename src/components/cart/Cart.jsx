@@ -43,9 +43,9 @@ function Cart() {
       else{
         try {
         await apiRequest.post("carts", product);
-        apiRequest.get("get_cart_items").then((res) => {
-          setCartCount(res.data[0].items);
-          setItem(res.data[0]);
+        apiRequest.get(`single/${user_id}`).then((res) => {
+          setCartCount(res.data.items);
+          setItem(res.data);
         });
       } catch (err) {
         console.log(err);
@@ -60,9 +60,9 @@ function Cart() {
 
     try {
       await apiRequest.post("carts", product);
-      apiRequest.get("get_cart_items").then((res) => {
-        setCartCount(res.data[0].items);
-        setItem(res.data[0]);
+      apiRequest.get(`single/${user_id}`).then((res) => {
+        setCartCount(res.data.items);
+        setItem(res.data);
       });
     } catch (err) {
       console.log(err);
@@ -71,15 +71,26 @@ function Cart() {
 
   useEffect(() => {
     apiRequest
-      .get("get_cart_items")
+      .get(`single/${user_id}`)
       .then((res) => {
-        setItem(res.data[0]);
+        setItem(res.data);
         setLoading(false);
+        console.log(res)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const checkOut = async (item) => {
+    // try {
+    //  const res = await apiRequest.post('create-checkout-session', {item})
+    //  console.log(res)
+    // } catch (err) {
+    //   console.log(err)
+    console.log(item)
+    // }
+  }
 
   return (
     <Container sx={{ pt: 3, pb: 3 }}>
@@ -316,7 +327,7 @@ function Cart() {
                       variant="contained"
                       type="submit"
                       sx={{ width: 250, mt: 2 }}
-                      // onClick={test}
+                      onClick={checkOut}
                     >
                       PROCEED TO CHECKOUT
                     </ColorButton>

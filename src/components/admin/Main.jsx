@@ -1,6 +1,8 @@
 import  React, {useEffect, useContext, useState} from "react";
 import { store } from "../../context/Context";
 import apiRequest from "../../utils/apiRequest";
+import Usertbable from "./Usertbable";
+import Seller from "./Seller";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -16,8 +18,6 @@ import TabPanel from '@mui/lab/TabPanel';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-
-import Usertbable from "./Usertbable";
 
 
 const Main = () => {
@@ -106,7 +106,9 @@ const Main = () => {
         <TabPanel value="1">
         <Usertbable />
         </TabPanel>
-        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="2">
+          <Seller />
+        </TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
       </TabContext>
 

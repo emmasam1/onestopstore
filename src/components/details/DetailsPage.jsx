@@ -37,6 +37,7 @@ export default function DetailsPage() {
       }else{
         await apiRequest.post("carts", product);
       toast.success("Item added to cart");
+      console.log(product)
 
       apiRequest.get("get_cart_items").then((res) => {
         setCartCount(res.data[0].items);
