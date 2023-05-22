@@ -75,7 +75,6 @@ function Cart() {
       .then((res) => {
         setItem(res.data);
         setLoading(false);
-        console.log(res)
       })
       .catch((err) => {
         console.log(err);

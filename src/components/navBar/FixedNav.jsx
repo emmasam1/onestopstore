@@ -37,8 +37,6 @@ function FixedNav() {
   const isIn = localStorage.getItem("firstLogin");
   const whoLoggedin = parseInt(localStorage.getItem("whoLoggedIn"));
 
-  console.log(whoLoggedin);
-
   const changeNavbar = () => {
     if (window.scrollY >= 20) {
       setFixedNav(true);
