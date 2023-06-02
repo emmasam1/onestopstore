@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import apiRequest from "../../utils/apiRequest";
 
 import Box from "@mui/material/Box";
@@ -21,45 +21,48 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const Add = () => {
-  const [title, setTitle] = useState('')
-  const [price, setPrice] = useState('')
-  const [description, setDescription] = useState('')
-  const [shortDescription, setShortDescription] = useState('')
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [shortDescription, setShortDescription] = useState("");
   const [image, setImage] = useState([]);
 
-
-  const handleImage = (e) =>{
+  const handleImage = (e) => {
     const file = e.target.files[0];
     setFileToBase(file);
-}
+  };
 
-const setFileToBase = (file) =>{
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = () =>{
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
       setImage(reader.result);
-  }
-
-}
+    };
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await apiRequest.post('product', {title, price, image, description, shortDescription})
-      if(data.data.success === true){
-        setTitle('')
-        setPrice('')
-        setImage('')
-        setDescription('')
-        setShortDescription('')
-        toast.success('Product created successfully')
-        console.log(data.data)
+      const data = await apiRequest.post("product", {
+        title,
+        price,
+        image,
+        description,
+        shortDescription,
+      });
+      if (data.data.success === true) {
+        setTitle("");
+        setPrice("");
+        setImage("");
+        setDescription("");
+        setShortDescription("");
+        toast.success("Product created successfully");
       }
       console.log(data.data);
     } catch (err) {
-      toast.error("Can't send an empty product")
-    }   
+      toast.error("Can't send an empty product");
+    }
   };
 
   return (
@@ -71,7 +74,7 @@ const setFileToBase = (file) =>{
         margin: "auto",
       }}
     >
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <Box sx={{ pt: 6, textAlign: "center" }}>
           <Typography variant="h4" fontSize={25}>
             Add a product
@@ -79,7 +82,7 @@ const setFileToBase = (file) =>{
         </Box>
 
         <Box>
-          <ToastContainer 
+          <ToastContainer
             position="top-center"
             autoClose={5000}
             hideProgressBar={false}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import apiRequest from "../../utils/apiRequest";
+import { useNavigate } from "react-router-dom";
 import {
   showErrMsg,
   showSuccessMsg,
@@ -14,6 +15,7 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { purple } from "@mui/material/colors";
+import { ToastContainer, toast } from "react-toastify";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -34,8 +36,9 @@ const initialState = {
 
 const Seller = () => {
   const [seller, setSeller] = useState(initialState);
-  // const user_id = localStorage.getItem("firstLogin");
-  // console.log(user_id)
+  const user_id = localStorage.getItem("firstLogin");
+
+  const navigate = useNavigate();
 
   const { store_name, phone, address, err, success } = seller;
 
@@ -55,16 +58,22 @@ const Seller = () => {
       });
 
     try {
-      const res = await apiRequest.post("become_a_seller", {
+      const res = await apiRequest.post(`become_a_seller/${user_id}`, {
         store_name,
         phone,
         address,
       });
-      setSeller({...seller, err: "", success: res.data.msg})
-      console.log(res)
+
+      if (res.data.type === 'success') {
+        navigate("/");
+      }
+
+      setSeller({ ...seller, err: "", success: res.data.msg });
     } catch (err) {
       err.response.data.msg &&
         setSeller({ ...seller, err: err.response.data.msg, success: "" });
+
+      // toast.error("Error sending request");
     }
   };
   return (
@@ -84,6 +93,21 @@ const Seller = () => {
             <Typography variant="h4" fontSize={25}>
               Become a seller
             </Typography>
+          </Box>
+
+          <Box>
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </Box>
 
           <Box>

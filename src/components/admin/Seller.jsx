@@ -33,17 +33,18 @@ const Seller = () => {
       });
   }, []);
 
-  const confirmSeller = async () => {
-    // try {
-    //   const res = await apiRequest.get("sellers", {sellers});
-    //   const id = res.data.sellers;
-    //  res =  await apiRequest.patch("isSeller", { id });
-    //   console.log(res)
-    // } catch (err) {
-    //   console.log(err);
-    // }
+  const confirmSeller = async (e) => {
+    try {
+      const res = await apiRequest.get("sellers");
+      // // const id = res.data.sellers;
+      // const res = await apiRequest.patch("isSeller");
+      // console.log(res);
+      console.log(e)
+      console.log(res)
+    } catch (err) {
+      console.log(err);
+    }
   };
-
 
   const numOfTotalPages = Math.ceil(sellers.length / usersPerPage);
   const pages = [...Array(usersPerPage + 1).keys()].slice(1);
@@ -90,7 +91,7 @@ const Seller = () => {
                     <ColorButton
                       variant="contained"
                       type="submit"
-                      onClick={confirmSeller}
+                      onClick={()=> confirmSeller(seller._id)}
                     >
                       confirm
                     </ColorButton>
